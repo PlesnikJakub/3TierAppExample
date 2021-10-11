@@ -1,12 +1,20 @@
-﻿namespace BussinesLayer.TransactionScript
+﻿using DataAccess.TableDataGateway;
+
+namespace BussinesLayer.TransactionScript
 {
     public class Login
     {
         public bool Execute(string name, string pass)
         {
-            // TODO
+            var tdg = new UserTableDataGataway();
+            var user = tdg.GetUserByName(name);
 
-            return true;
+            if (user.Pass == pass)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
