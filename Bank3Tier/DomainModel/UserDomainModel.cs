@@ -1,4 +1,6 @@
-﻿namespace BussinesLayer.DomainModel
+﻿using DataAccess.TableDataGateway;
+
+namespace BussinesLayer.DomainModel
 {
     public class UserDomainModel
     {
@@ -9,7 +11,15 @@
 
         public static bool Login(string name, string pass)
         {
-            return true;
+            var tdg = new UserTableDataGataway();
+            var user = tdg.GetUserByName(name);
+
+            if (user.Pass == pass)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public static bool Logout()

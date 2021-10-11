@@ -19,10 +19,6 @@ namespace WinFormsApp1
             var login = new Login();
             var authenticated = login.Execute(textBox1.Text, textBox2.Text);
 
-            var userTblModule = new UserTableModule();
-
-            var user = new UserDomainModel();
-
             if (authenticated)
             {
                 loginDetectionLabel.Text = "YES";

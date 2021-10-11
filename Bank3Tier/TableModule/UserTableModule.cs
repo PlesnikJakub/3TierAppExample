@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.TableDataGateway;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,15 @@ namespace BussinesLayer.TableModule
     {
         public bool Login(string name, string pass)
         {
-            return true;
+            var tdg = new UserTableDataGataway();
+            var user = tdg.GetUserByName(name);
+
+            if(user.Pass == pass)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool Logout()
