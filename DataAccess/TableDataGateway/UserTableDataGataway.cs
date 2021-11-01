@@ -18,7 +18,8 @@ namespace DataAccess.TableDataGateway
             var dataTable = new DataTable();
             string sql = "SELECT * FROM STUDENTS;";
 
-            SqlConnectionStringBuilder builder = DBConnector.GetBuilder();
+            var builder = DBConnector.GetBuilder();
+
             using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
             {
                 connection.Open();
@@ -43,12 +44,10 @@ namespace DataAccess.TableDataGateway
             };
         }
 
-        public DataTable FindById(int id)
+        public DataTable FindByName(string name)
         {
-            string name = "";
             var dataTable = new DataTable();
             string sql = "SELECT * FROM CUSTOMERS WHERE NAME = @name;";
-
             using (SqlConnection connection = new SqlConnection(DBConnector.GetBuilder().ConnectionString))
             {
                 connection.Open();
